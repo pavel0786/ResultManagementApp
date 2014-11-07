@@ -16,13 +16,6 @@ namespace ResultManagementApp.DLL.DAO
 
         public decimal Score { get; set; }
         public DateTime ResultPublicationDate { get; set; }
-
-        public Student AStudent { get; set; }
-
-        public Course ACourse { get; set; }
-
-        public string  CourseName { get; set; }
-
-
+        
     }
 }

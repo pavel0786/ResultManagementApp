@@ -35,6 +35,10 @@ namespace ResultManagementApp.UI
                     studentIdLabel.Text = aStudent.StudentId.ToString();
                     nameTextBox.Text = aStudent.StudentName;
                     emailTextBox.Text = aStudent.StudentMail;
+                    averageScoreTextBox.Text = new EnrollCourseBLL().GetAverage(aStudent).ToString();
+                    gradeLetterTextBox.Text = new EnrollCourseBLL().getGradeLatter(aStudent).ToString();
+
+                    coursesDataGridView.DataSource = new EnrollCourseBLL().GetCoursesByStudent(aStudent);
                 }
             }
             catch (Exception ex)
@@ -42,5 +46,12 @@ namespace ResultManagementApp.UI
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void ResultSheetUI_Load(object sender, EventArgs e)
+        {
+            coursesDataGridView.AutoGenerateColumns = false;
+
+        }
+
     }
 }

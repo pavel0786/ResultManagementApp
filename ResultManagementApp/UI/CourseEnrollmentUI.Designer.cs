@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,10 +42,12 @@
             this.findButton = new System.Windows.Forms.Button();
             this.enrollButton = new System.Windows.Forms.Button();
             this.courseEnrollmentGroupBox = new System.Windows.Forms.GroupBox();
-            this.EnrolledCoursesGroupBox = new System.Windows.Forms.GroupBox();
             this.studentIdLabel = new System.Windows.Forms.Label();
+            this.EnrolledCoursesGroupBox = new System.Windows.Forms.GroupBox();
             this.coursesDataGridView = new System.Windows.Forms.DataGridView();
             this.CourseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CourseTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EnrollDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.courseEnrollmentGroupBox.SuspendLayout();
             this.EnrolledCoursesGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.coursesDataGridView)).BeginInit();
@@ -177,6 +180,15 @@
             this.courseEnrollmentGroupBox.TabStop = false;
             this.courseEnrollmentGroupBox.Text = "Student Information";
             // 
+            // studentIdLabel
+            // 
+            this.studentIdLabel.AutoSize = true;
+            this.studentIdLabel.Location = new System.Drawing.Point(326, 36);
+            this.studentIdLabel.Name = "studentIdLabel";
+            this.studentIdLabel.Size = new System.Drawing.Size(13, 13);
+            this.studentIdLabel.TabIndex = 12;
+            this.studentIdLabel.Text = "0";
+            // 
             // EnrolledCoursesGroupBox
             // 
             this.EnrolledCoursesGroupBox.Controls.Add(this.coursesDataGridView);
@@ -187,20 +199,14 @@
             this.EnrolledCoursesGroupBox.TabStop = false;
             this.EnrolledCoursesGroupBox.Text = "Enrolled Courses";
             // 
-            // studentIdLabel
-            // 
-            this.studentIdLabel.AutoSize = true;
-            this.studentIdLabel.Location = new System.Drawing.Point(326, 36);
-            this.studentIdLabel.Name = "studentIdLabel";
-            this.studentIdLabel.Size = new System.Drawing.Size(13, 13);
-            this.studentIdLabel.TabIndex = 12;
-            this.studentIdLabel.Text = "0";
-            // 
             // coursesDataGridView
             // 
+            this.coursesDataGridView.AllowUserToAddRows = false;
             this.coursesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.coursesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CourseName});
+            this.CourseName,
+            this.CourseTitle,
+            this.EnrollDate});
             this.coursesDataGridView.Location = new System.Drawing.Point(19, 19);
             this.coursesDataGridView.Name = "coursesDataGridView";
             this.coursesDataGridView.Size = new System.Drawing.Size(557, 186);
@@ -211,6 +217,20 @@
             this.CourseName.DataPropertyName = "CourseName";
             this.CourseName.HeaderText = "CourseName";
             this.CourseName.Name = "CourseName";
+            // 
+            // CourseTitle
+            // 
+            this.CourseTitle.DataPropertyName = "CourseTitle";
+            this.CourseTitle.HeaderText = "CourseTitle";
+            this.CourseTitle.Name = "CourseTitle";
+            // 
+            // EnrollDate
+            // 
+            this.EnrollDate.DataPropertyName = "EnrollDate";
+            dataGridViewCellStyle2.Format = "dd-MM-yyyy";
+            this.EnrollDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.EnrollDate.HeaderText = "EnrollDate";
+            this.EnrollDate.Name = "EnrollDate";
             // 
             // CourseEnrollmentUI
             // 
@@ -249,5 +269,7 @@
         private System.Windows.Forms.Label studentIdLabel;
         private System.Windows.Forms.DataGridView coursesDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn CourseName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CourseTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EnrollDate;
     }
 }

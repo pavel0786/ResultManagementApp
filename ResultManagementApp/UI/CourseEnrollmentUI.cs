@@ -36,10 +36,7 @@ namespace ResultManagementApp.UI
                     studentIdLabel.Text = aStudent.StudentId.ToString();
                     nameTextBox.Text = aStudent.StudentName;
                     emailTextBox.Text = aStudent.StudentMail;
-
-                    EnrollCourseBLL aEnrollCourseBll = new EnrollCourseBLL();
-                    List<EnrollCourse> enrollCourselist = aEnrollCourseBll.GetCourseByStudentID(aStudent.StudentId);
-                    coursesDataGridView.DataSource = enrollCourselist;
+                    coursesDataGridView.DataSource = new EnrollCourseBLL().GetCoursesByStudent(aStudent);
                 }
             }
             catch (Exception ex)
@@ -57,9 +54,7 @@ namespace ResultManagementApp.UI
         private void CourseEnrollmentUI_Load(object sender, EventArgs e)
         {
             CourseBLL aCourseBll = new CourseBLL();
-            List<Course> courses = new List<Course>();
-            courses = aCourseBll.GetAllCourses();
-            courseComboBox.DataSource = courses;
+            courseComboBox.DataSource = aCourseBll.GetAllCourses();
             coursesDataGridView.AutoGenerateColumns = false;
         }
 
@@ -67,8 +62,7 @@ namespace ResultManagementApp.UI
         {
             EnrollCourse aEnrollCourse=new EnrollCourse();
             aEnrollCourse.StudentId = Convert.ToInt32(studentIdLabel.Text);
-            Course theCourse = courseComboBox.SelectedValue as Course;
-            aEnrollCourse.CourseId = theCourse.CourseId;
+            aEnrollCourse.CourseId = (courseComboBox.SelectedValue as Course).CourseId;
             aEnrollCourse.EnrollDate = enrollmentDateDateTimePicker.Value;
             EnrollCourseBLL aEnrollCourseBll=new EnrollCourseBLL();
             bool b = false;

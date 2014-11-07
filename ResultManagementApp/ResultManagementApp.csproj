@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -50,6 +51,7 @@
     <Compile Include="DataConnect.cs" />
     <Compile Include="DLL\DAO\Course.cs" />
     <Compile Include="DLL\DAO\EnrollCourse.cs" />
+    <Compile Include="DLL\DAO\EnrollCourseView.cs" />
     <Compile Include="DLL\DAO\Student.cs" />
     <Compile Include="DLL\Gateway\CourseGateway.cs" />
     <Compile Include="DLL\Gateway\EnrollCourseGateway.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UI\CourseEnrollmentUI.resx">
       <DependentUpon>CourseEnrollmentUI.cs</DependentUpon>
@@ -112,7 +115,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.findButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -36,17 +37,20 @@
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.regNoTextBox = new System.Windows.Forms.TextBox();
             this.resultGroupBox = new System.Windows.Forms.GroupBox();
+            this.coursesDataGridView = new System.Windows.Forms.DataGridView();
             this.courseEnrollmentGroupBox = new System.Windows.Forms.GroupBox();
+            this.studentIdLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.gradeLetterTextBox = new System.Windows.Forms.TextBox();
             this.averageScoreTextBox = new System.Windows.Forms.TextBox();
-            this.studentIdLabel = new System.Windows.Forms.Label();
-            this.coursesDataGridView = new System.Windows.Forms.DataGridView();
             this.CourseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResultPublicationDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Score = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GradeLatter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultGroupBox.SuspendLayout();
-            this.courseEnrollmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.coursesDataGridView)).BeginInit();
+            this.courseEnrollmentGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -117,6 +121,20 @@
             this.resultGroupBox.TabStop = false;
             this.resultGroupBox.Text = "Result";
             // 
+            // coursesDataGridView
+            // 
+            this.coursesDataGridView.AllowUserToAddRows = false;
+            this.coursesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.coursesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CourseName,
+            this.ResultPublicationDate,
+            this.Score,
+            this.GradeLatter});
+            this.coursesDataGridView.Location = new System.Drawing.Point(17, 19);
+            this.coursesDataGridView.Name = "coursesDataGridView";
+            this.coursesDataGridView.Size = new System.Drawing.Size(483, 154);
+            this.coursesDataGridView.TabIndex = 1;
+            // 
             // courseEnrollmentGroupBox
             // 
             this.courseEnrollmentGroupBox.Controls.Add(this.studentIdLabel);
@@ -137,6 +155,15 @@
             this.courseEnrollmentGroupBox.TabIndex = 14;
             this.courseEnrollmentGroupBox.TabStop = false;
             this.courseEnrollmentGroupBox.Text = "Student Information";
+            // 
+            // studentIdLabel
+            // 
+            this.studentIdLabel.AutoSize = true;
+            this.studentIdLabel.Location = new System.Drawing.Point(267, 30);
+            this.studentIdLabel.Name = "studentIdLabel";
+            this.studentIdLabel.Size = new System.Drawing.Size(13, 13);
+            this.studentIdLabel.TabIndex = 20;
+            this.studentIdLabel.Text = "0";
             // 
             // label4
             // 
@@ -170,30 +197,31 @@
             this.averageScoreTextBox.Size = new System.Drawing.Size(100, 20);
             this.averageScoreTextBox.TabIndex = 18;
             // 
-            // studentIdLabel
-            // 
-            this.studentIdLabel.AutoSize = true;
-            this.studentIdLabel.Location = new System.Drawing.Point(267, 30);
-            this.studentIdLabel.Name = "studentIdLabel";
-            this.studentIdLabel.Size = new System.Drawing.Size(13, 13);
-            this.studentIdLabel.TabIndex = 20;
-            this.studentIdLabel.Text = "0";
-            // 
-            // coursesDataGridView
-            // 
-            this.coursesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.coursesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CourseName});
-            this.coursesDataGridView.Location = new System.Drawing.Point(17, 19);
-            this.coursesDataGridView.Name = "coursesDataGridView";
-            this.coursesDataGridView.Size = new System.Drawing.Size(483, 154);
-            this.coursesDataGridView.TabIndex = 1;
-            // 
             // CourseName
             // 
             this.CourseName.DataPropertyName = "CourseName";
             this.CourseName.HeaderText = "CourseName";
             this.CourseName.Name = "CourseName";
+            // 
+            // ResultPublicationDate
+            // 
+            this.ResultPublicationDate.DataPropertyName = "ResultPublicationDate";
+            dataGridViewCellStyle1.Format = "dd-MM-yyyy";
+            this.ResultPublicationDate.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ResultPublicationDate.HeaderText = "ResultPublicationDate";
+            this.ResultPublicationDate.Name = "ResultPublicationDate";
+            // 
+            // Score
+            // 
+            this.Score.DataPropertyName = "Score";
+            this.Score.HeaderText = "Score";
+            this.Score.Name = "Score";
+            // 
+            // GradeLatter
+            // 
+            this.GradeLatter.DataPropertyName = "GradeLatter";
+            this.GradeLatter.HeaderText = "GradeLatter";
+            this.GradeLatter.Name = "GradeLatter";
             // 
             // ResultSheetUI
             // 
@@ -204,10 +232,11 @@
             this.Controls.Add(this.courseEnrollmentGroupBox);
             this.Name = "ResultSheetUI";
             this.Text = "ResultSheetUI";
+            this.Load += new System.EventHandler(this.ResultSheetUI_Load);
             this.resultGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.coursesDataGridView)).EndInit();
             this.courseEnrollmentGroupBox.ResumeLayout(false);
             this.courseEnrollmentGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.coursesDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -230,6 +259,9 @@
         private System.Windows.Forms.Label studentIdLabel;
         private System.Windows.Forms.DataGridView coursesDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn CourseName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResultPublicationDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Score;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GradeLatter;
 
     }
 }

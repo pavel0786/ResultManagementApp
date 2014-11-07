@@ -33,14 +33,11 @@ namespace ResultManagementApp.UI
                 else
                 {
                     studentIdLabel.Text = aStudent.StudentId.ToString();
-                    CourseBLL aCourseBll = new CourseBLL();
-                    List<Course> courses = new List<Course>();
-                    courses = aCourseBll.GetAllCoursesByStudentId(aStudent.StudentId);
-                    courseComboBox.DataSource = courses;
-
-                    
                     nameTextBox.Text = aStudent.StudentName;
                     emailTextBox.Text = aStudent.StudentMail;
+
+                    EnrollCourseBLL aEnrollCourseBll = new EnrollCourseBLL();
+                    courseComboBox.DataSource = aEnrollCourseBll.GetCoursesByStudent(aStudent);
                 }
             }
             catch (Exception ex)
@@ -56,22 +53,20 @@ namespace ResultManagementApp.UI
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            EnrollCourse aEnrollCourse = new EnrollCourse();
-            aEnrollCourse.StudentId = Convert.ToInt32(studentIdLabel.Text);
-            Course theCourse = courseComboBox.SelectedValue as Course;
-            aEnrollCourse.CourseId = theCourse.CourseId;
-            aEnrollCourse.Score = Convert.ToDecimal(scoreTextBox.Text);
-            aEnrollCourse.ResultPublicationDate = resultPublishingDateDateTimePicker.Value;
-            EnrollCourseBLL aEnrollCourseBll = new EnrollCourseBLL();
-            bool b = false;
-            b = aEnrollCourseBll.SaveResultInsert(aEnrollCourse);
-            if (b == true)
+            if (courseComboBox.SelectedIndex >= 0)
             {
-                MessageBox.Show("Insert Successfully !!");
-            }
-            else
-            {
-                MessageBox.Show("Insert failed !!");
+                EnrollCourse aEnrollCourse = new EnrollCourse();
+                aEnrollCourse.EnrollId = (courseComboBox.SelectedValue as EnrollCourseView).EnrollId;
+                aEnrollCourse.Score = Convert.ToDecimal(scoreTextBox.Text);
+                aEnrollCourse.ResultPublicationDate = resultPublishingDateDateTimePicker.Value;
+                if (new EnrollCourseBLL().EnrollCourseUpdateScoreAndResultDate(aEnrollCourse) == true)
+                {
+                    MessageBox.Show("Score and date updatd successfully");
+                }
+                else
+                {
+                    MessageBox.Show("Fail");
+                }
             }
         }
 

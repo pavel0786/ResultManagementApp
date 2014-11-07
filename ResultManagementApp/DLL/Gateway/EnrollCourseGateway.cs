@@ -10,9 +10,6 @@ using ResultManagementApp.DLL.DAO;
 namespace ResultManagementApp.DLL.Gateway
 {
     class EnrollCourseGateway
-
-
-
     {
         public bool EnrollCourseInsert(EnrollCourse aEnrollCourse)
         {
@@ -52,7 +49,7 @@ namespace ResultManagementApp.DLL.Gateway
             }
         }
 
-        public List<EnrollCourse> GetAllEnrollCourses()
+        public bool EnrollCourseUpdateScoreAndResultDate(EnrollCourse aEnrollCourse)
         {
             try
             {
@@ -60,59 +57,10 @@ namespace ResultManagementApp.DLL.Gateway
                 aConnection.ConnectionString = DataConnect.ConnectionString;
 
                 aConnection.Open();
-                string query = @"select c.CourseName
-                                from T_EnrollCourse E
-                                inner join T_Student S on E.StudentId = s.StudentId
-                                inner join T_Course c on c.CourseId = e.CourseId
-                                where e.StudentId = ";
-                SqlCommand aCommand = new SqlCommand(query, aConnection);
-
-                SqlDataReader aReader = aCommand.ExecuteReader();
-                List<EnrollCourse> courses = new List<EnrollCourse>();
-
-
-                if (aReader.HasRows)
-                {
-                    while (aReader.Read())
-                    {
-                        EnrollCourse aCourse = new EnrollCourse();
-                        aCourse.CourseId = (int)aReader[0];
-                        aCourse.CourseName = aReader[1].ToString();
-                        aCourse.EnrollDate = Convert.ToDateTime(aReader[2]);
-                        courses.Add(aCourse);
-                    }
-
-                }
-                aConnection.Close();
-                return courses;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public bool SaveResultInsert(EnrollCourse aEnrollCourse)
-        {
-            try
-            {
-                SqlConnection aConnection = new SqlConnection();
-                aConnection.ConnectionString = DataConnect.ConnectionString;
-
-                aConnection.Open();
-                string query = String.Format(@"insert into T_EnrollCourse
-                                (
-	                                StudentId,
-	                                CourseId,
-	                                Score,
-                                    ResultPublicationDate
-                                )
-                                values
-                                (
-                                    '{0}',
-                                    '{1}',
-                                    '{2}',
-                                    '{3}'
-                                )", aEnrollCourse.StudentId, aEnrollCourse.CourseId, aEnrollCourse.Score,aEnrollCourse.ResultPublicationDate);
+                string query = String.Format(@"Update T_EnrollCourse
+                            set Score = {0},
+                            ResultPublicationDate = '{1}'
+                            where EnrollId = {2}",aEnrollCourse.Score,aEnrollCourse.ResultPublicationDate,aEnrollCourse.EnrollId);
 
                 SqlCommand aCommand = new SqlCommand(query, aConnection);
 
@@ -130,70 +78,62 @@ namespace ResultManagementApp.DLL.Gateway
                 throw ex;
             }
         }
-
-        public List<EnrollCourse> GetCourseByStudentID(int StudentID)
+        public List<EnrollCourseView> GetCoursesByStudent(Student aStudent)
         {
             try
             {
                 SqlConnection aConnection = new SqlConnection();
                 aConnection.ConnectionString = DataConnect.ConnectionString;
-
                 aConnection.Open();
-                string query = @"select c.CourseName
-                                from T_EnrollCourse E
-                                inner join T_Student S on E.StudentId = s.StudentId
-                                inner join T_Course c on c.CourseId = e.CourseId
-                                where e.StudentId = " + StudentID;
+                string query = String.Format(@"select *
+                            from EnrollCourseView
+                            where StudentId = {0}",aStudent.StudentId);
+
                 SqlCommand aCommand = new SqlCommand(query, aConnection);
                 SqlDataReader aReader = aCommand.ExecuteReader();
-                List<EnrollCourse> enrollCourses = new List<EnrollCourse>();
+                List<EnrollCourseView> listEnrollCourseView = new List<EnrollCourseView>();
+
                 if (aReader.HasRows)
                 {
                     while (aReader.Read())
                     {
-                        EnrollCourse aEnrollCourse = new EnrollCourse();
-                        aEnrollCourse.CourseName = aReader[0].ToString();
-                        enrollCourses.Add(aEnrollCourse);
+                        EnrollCourseView aEnrollCourseView = new EnrollCourseView();
+                        aEnrollCourseView.EnrollId = int.Parse(aReader["EnrollId"].ToString());
+                        aEnrollCourseView.StudentId = int.Parse(aReader["StudentId"].ToString());
+                        aEnrollCourseView.CourseId = int.Parse(aReader["CourseId"].ToString());
+                        if (aReader["EnrollDate"].ToString() != "")
+                        {
+                            aEnrollCourseView.EnrollDate = DateTime.Parse(aReader["EnrollDate"].ToString());
+                        }
+                        if (aReader["Score"].ToString() != "")
+                        {
+                            aEnrollCourseView.Score = decimal.Parse(aReader["Score"].ToString());
+                        }
+                        else
+                        {
+                            aEnrollCourseView.Score = -1;
+                        }
+                        if (aReader["ResultPublicationDate"].ToString() != "")
+                        {
+                            aEnrollCourseView.ResultPublicationDate = DateTime.Parse(aReader["ResultPublicationDate"].ToString());
+                        }
+                        aEnrollCourseView.StudentRegNo = aReader["StudentRegNo"].ToString();
+                        aEnrollCourseView.StudentName = aReader["StudentName"].ToString();
+                        aEnrollCourseView.StudentMail = aReader["StudentMail"].ToString();
+                        aEnrollCourseView.CourseName = aReader["CourseName"].ToString();
+                        aEnrollCourseView.CourseTitle = aReader["CourseTitle"].ToString();
+                        listEnrollCourseView.Add(aEnrollCourseView);
                     }
-
                 }
                 aConnection.Close();
-                return enrollCourses;
+                return listEnrollCourseView;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-        //public double GetAverageScoreByStudentID(int StudentID)
-        //{
-        //    ////try
-        //    ////{
-        //    ////    SqlConnection aConnection = new SqlConnection();
-        //    ////    aConnection.ConnectionString = DataConnect.ConnectionString;
 
-        //    ////    aConnection.Open();
-        //    ////    string query = @"SELECT AVG(score) FROM T_EnrollCourse where StudentId" + StudentID;
-        //    ////    SqlCommand aCommand = new SqlCommand(query, aConnection);
-        //    ////    SqlDataReader aReader = aCommand.ExecuteReader();
-               
-        //    ////    if (aReader.HasRows)
-        //    ////    {
-        //    ////        while (aReader.Read())
-        //    ////        {
-        //    ////            EnrollCourse aEnrollCourse = new EnrollCourse();
-        //    ////            aEnrollCourse.CourseName = aReader[0].ToString();
-        //    ////            enrollCourses.Add(aEnrollCourse);
-        //    ////        }
 
-        //    ////    }
-        //    ////    aConnection.Close();
-        //    ////    return enrollCourses;
-        //    ////}
-        //    ////catch (Exception ex)
-        //    ////{
-        //    ////    throw ex;
-        //    //}
-        //}
     }
 }
