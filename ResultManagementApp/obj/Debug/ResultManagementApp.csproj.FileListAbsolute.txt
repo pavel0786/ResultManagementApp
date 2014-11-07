@@ -1,0 +1,24 @@
+c:\users\bitm-301-pc\documents\visual studio 2013\Projects\ResultManagementApp\ResultManagementApp\bin\Debug\ResultManagementApp.exe.config
+c:\users\bitm-301-pc\documents\visual studio 2013\Projects\ResultManagementApp\ResultManagementApp\obj\Debug\ResultManagementApp.csprojResolveAssemblyReference.cache
+c:\users\bitm-301-pc\documents\visual studio 2013\Projects\ResultManagementApp\ResultManagementApp\obj\Debug\ResultManagementApp.Properties.Resources.resources
+c:\users\bitm-301-pc\documents\visual studio 2013\Projects\ResultManagementApp\ResultManagementApp\obj\Debug\ResultManagementApp.UI.CourseEnrollmentUI.resources
+c:\users\bitm-301-pc\documents\visual studio 2013\Projects\ResultManagementApp\ResultManagementApp\obj\Debug\ResultManagementApp.UI.MainUI.resources
+c:\users\bitm-301-pc\documents\visual studio 2013\Projects\ResultManagementApp\ResultManagementApp\obj\Debug\ResultManagementApp.UI.ResultEntryUI.resources
+c:\users\bitm-301-pc\documents\visual studio 2013\Projects\ResultManagementApp\ResultManagementApp\obj\Debug\ResultManagementApp.UI.ResultSheetUI.resources
+c:\users\bitm-301-pc\documents\visual studio 2013\Projects\ResultManagementApp\ResultManagementApp\obj\Debug\ResultManagementApp.csproj.GenerateResource.Cache
+c:\users\bitm-301-pc\documents\visual studio 2013\Projects\ResultManagementApp\ResultManagementApp\bin\Debug\ResultManagementApp.exe
+c:\users\bitm-301-pc\documents\visual studio 2013\Projects\ResultManagementApp\ResultManagementApp\bin\Debug\ResultManagementApp.pdb
+c:\users\bitm-301-pc\documents\visual studio 2013\Projects\ResultManagementApp\ResultManagementApp\obj\Debug\ResultManagementApp.exe
+c:\users\bitm-301-pc\documents\visual studio 2013\Projects\ResultManagementApp\ResultManagementApp\obj\Debug\ResultManagementApp.pdb
+C:\Users\Raihan Mahmud\Documents\Visual Studio 2013\Projects\ResultManagementApp\ResultManagementApp\bin\Debug\ResultManagementApp.exe.config
+C:\Users\Raihan Mahmud\Documents\Visual Studio 2013\Projects\ResultManagementApp\ResultManagementApp\obj\Debug\ResultManagementApp.exe
+C:\Users\Raihan Mahmud\Documents\Visual Studio 2013\Projects\ResultManagementApp\ResultManagementApp\obj\Debug\ResultManagementApp.pdb
+C:\Users\Raihan Mahmud\Documents\Visual Studio 2013\Projects\ResultManagementApp\ResultManagementApp\bin\Debug\ResultManagementApp.exe
+C:\Users\Raihan Mahmud\Documents\Visual Studio 2013\Projects\ResultManagementApp\ResultManagementApp\bin\Debug\ResultManagementApp.pdb
+C:\Users\Raihan Mahmud\Documents\Visual Studio 2013\Projects\ResultManagementApp\ResultManagementApp\obj\Debug\ResultManagementApp.csprojResolveAssemblyReference.cache
+C:\Users\Raihan Mahmud\Documents\Visual Studio 2013\Projects\ResultManagementApp\ResultManagementApp\obj\Debug\ResultManagementApp.Properties.Resources.resources
+C:\Users\Raihan Mahmud\Documents\Visual Studio 2013\Projects\ResultManagementApp\ResultManagementApp\obj\Debug\ResultManagementApp.UI.CourseEnrollmentUI.resources
+C:\Users\Raihan Mahmud\Documents\Visual Studio 2013\Projects\ResultManagementApp\ResultManagementApp\obj\Debug\ResultManagementApp.UI.MainUI.resources
+C:\Users\Raihan Mahmud\Documents\Visual Studio 2013\Projects\ResultManagementApp\ResultManagementApp\obj\Debug\ResultManagementApp.UI.ResultEntryUI.resources
+C:\Users\Raihan Mahmud\Documents\Visual Studio 2013\Projects\ResultManagementApp\ResultManagementApp\obj\Debug\ResultManagementApp.UI.ResultSheetUI.resources
+C:\Users\Raihan Mahmud\Documents\Visual Studio 2013\Projects\ResultManagementApp\ResultManagementApp\obj\Debug\ResultManagementApp.csproj.GenerateResource.Cache
